@@ -178,39 +178,6 @@ Color trace(RTCScene &scene,RTCRayHit &rayhit ,const std::vector<Triangle> &tria
 
     while(true){
         if (box.contains(rayPosition)) {
-            const auto &hitPrim = triangles[rayhit.hit.primID];
-
-            out_color = hitPrim.getEmission() * hitPrim.getColor();////adding self emission
-
-
-            const double diffuse_q = hitPrim.getKd();
-
-            const double xi = dist(engine);
-
-            if(xi < diffuse_q) {
-                RTCRayHit _rayhit;
-                diffuseSample(rayhit, _rayhit);
-                _rayhit.ray.tnear = 0.001f;
-                _rayhit.ray.tfar = std::numeric_limits<float>::infinity();
-
-                _rayhit.ray.flags = 0;
-                _rayhit.hit.geomID = RTC_INVALID_GEOMETRY_ID;
-                _rayhit.hit.primID = RTC_INVALID_GEOMETRY_ID;
-
-                RTCIntersectContext context;
-                rtcInitIntersectContext(&context);
-
-                rtcIntersect1(scene, &context, &_rayhit);
-
-                out_color += (hitPrim.getKd() * hitPrim.getColor()).cwiseProduct(trace(scene,_rayhit,triangles,box));
-
-                return out_color;
-
-            }
-
-            break;
-        }else{
-
             double scatterDistance = -log(dist(engine)) / scattering_coefficient;
             double travelDistance = 0.0;
             double participating_media_kd = 0.25;
@@ -246,25 +213,57 @@ Color trace(RTCScene &scene,RTCRayHit &rayhit ,const std::vector<Triangle> &tria
                     newRayHit.hit.primID = RTC_INVALID_GEOMETRY_ID;
 
 
-
                     RTCIntersectContext context;
                     rtcInitIntersectContext(&context);
 
                     rtcIntersect1(scene, &context, &newRayHit);
 
 
-
-                    auto next_raytracing = trace(scene,newRayHit,triangles,box);
+                    auto next_raytracing = trace(scene, newRayHit, triangles, box);
                     out_color = next_raytracing;
 
                     return out_color;
-
-
-                    return trace(scene, newRayHit, triangles,box);
-                }else{
-                    return Color::Zero();
                 }
             }
+
+
+                    break;
+        }else{
+
+            const auto &hitPrim = triangles[rayhit.hit.primID];
+
+            out_color = hitPrim.getEmission() * hitPrim.getColor();////adding self emission
+
+
+            const double diffuse_q = hitPrim.getKd();
+
+            const double xi = dist(engine);
+
+            if(xi < diffuse_q) {
+                RTCRayHit _rayhit;
+                diffuseSample(rayhit, _rayhit);
+                _rayhit.ray.tnear = 0.001f;
+                _rayhit.ray.tfar = std::numeric_limits<float>::infinity();
+
+                _rayhit.ray.flags = 0;
+                _rayhit.hit.geomID = RTC_INVALID_GEOMETRY_ID;
+                _rayhit.hit.primID = RTC_INVALID_GEOMETRY_ID;
+
+                RTCIntersectContext context;
+                rtcInitIntersectContext(&context);
+
+                rtcIntersect1(scene, &context, &_rayhit);
+
+                out_color += (hitPrim.getKd() * hitPrim.getColor()).cwiseProduct(trace(scene,_rayhit,triangles,box));
+
+                return out_color;
+
+            }
+
+
+
+
+
 
         }
 
