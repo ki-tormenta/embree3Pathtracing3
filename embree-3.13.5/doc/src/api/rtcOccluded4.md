@@ -34,7 +34,7 @@
 The `rtcOccluded4/8/16` functions checks for each active ray of the
 ray packet of size 4, 8, or 16 (`ray` argument) whether there is any
 hit with the scene (`scene` argument). See Section [rtcOccluded1] for
-a description of how to set up and trace occlusion rays.
+a description of how to set up and traceWithMulti occlusion rays.
 
 A ray valid mask must be provided (`valid` argument) which stores
 one 32-bit integer (`-1` means valid and `0` invalid) per ray in the

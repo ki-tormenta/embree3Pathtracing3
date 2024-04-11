@@ -688,11 +688,11 @@ large packet-like streams in structure of pointer layout
 (`rtcIntersectNp` and `rtcOccludedNp`).
 
 See Sections [rtcIntersect1] and [rtcOccluded1] for a detailed
-description of how to set up and trace a ray.
+description of how to set up and traceWithMulti a ray.
 
 See tutorial [Triangle Geometry] for a complete example of how to
-trace single rays and ray packets. Also have a look at the tutorial
-[Stream Viewer] for an example of how to trace ray streams.
+traceWithMulti single rays and ray packets. Also have a look at the tutorial
+[Stream Viewer] for an example of how to traceWithMulti ray streams.
 
 Point Queries
 -------------
@@ -3279,7 +3279,7 @@ geometry ID of the instance in the top-level scene.
 
 The instancing scheme can also be implemented using user geometries. To
 achieve this, the user geometry code should set the `instID` member of
-the intersection context to the geometry ID of the instance, then trace
+the intersection context to the geometry ID of the instance, then traceWithMulti
 the transformed ray, and finally set the `instID` field of the
 intersection context again to -1. The `instID` field is copied
 automatically by each primitive intersector into the `instID` field of
@@ -4648,7 +4648,7 @@ intersection callback for each encountered intersection, if filtering
 of intersections is desired. This can be achieved through the
 `rtcFilterIntersection` call.
 
-Within the user geometry intersect function, it is safe to trace new
+Within the user geometry intersect function, it is safe to traceWithMulti new
 rays and create new scenes and geometries.
 
 When performing ray queries using `rtcIntersect1`, it is guaranteed
@@ -4752,7 +4752,7 @@ occlusion callback for each encountered intersection, if filtering of
 intersections is desired. This can be achieved through the
 `rtcFilterOcclusion` call.
 
-Within the user geometry occlusion function, it is safe to trace new
+Within the user geometry occlusion function, it is safe to traceWithMulti new
 rays and create new scenes and geometries.
 
 When performing ray queries using `rtcOccluded1`, it is guaranteed that
@@ -6522,7 +6522,7 @@ rtcIntersect4/8/16
 The `rtcIntersect4/8/16` functions finds the closest hits for a ray
 packet of size 4, 8, or 16 (`rayhit` argument) with the scene (`scene`
 argument). The ray/hit input contains a ray packet and hit packet. See
-Section [rtcIntersect1] for a description of how to set up and trace
+Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 
 A ray valid mask must be provided (`valid` argument) which stores one
@@ -6608,7 +6608,7 @@ rtcOccluded4/8/16
 The `rtcOccluded4/8/16` functions checks for each active ray of the ray
 packet of size 4, 8, or 16 (`ray` argument) whether there is any hit
 with the scene (`scene` argument). See Section [rtcOccluded1] for a
-description of how to set up and trace occlusion rays.
+description of how to set up and traceWithMulti occlusion rays.
 
 A ray valid mask must be provided (`valid` argument) which stores one
 32-bit integer (`-1` means valid and `0` invalid) per ray in the
@@ -6683,7 +6683,7 @@ The `rtcIntersect1M` function finds the closest hits for a stream of
 The `rayhit` argument points to an array of ray and hit data with
 specified byte stride (`byteStride` argument) between the ray/hit
 structures. See Section [rtcIntersect1] for a description of how to
-set up and trace rays.
+set up and traceWithMulti rays.
 
 The intersection context (`context` argument) can specify flags to
 optimize traversal and a filter callback function to be invoked for
@@ -6742,7 +6742,7 @@ The `rtcOccluded1M` function checks whether there are any hits for a
 stream of `M` single rays (`ray` argument) with the scene (`scene`
 argument). The `ray` argument points to an array of rays with specified
 byte stride (`byteStride` argument) between the rays. See Section
-[rtcOccluded1] for a description of how to set up and trace occlusion
+[rtcOccluded1] for a description of how to set up and traceWithMulti occlusion
 rays.
 
 The intersection context (`context` argument) can specify flags to
@@ -6802,7 +6802,7 @@ The `rtcIntersect1Mp` function finds the closest hits for a stream of
 `M` single rays (`rayhit` argument) with the scene (`scene` argument).
 The `rayhit` argument points to an array of pointers to the individual
 ray/hit structures. See Section [rtcIntersect1] for a description of
-how to set up and trace a ray.
+how to set up and traceWithMulti a ray.
 
 The intersection context (`context` argument) can specify flags to
 optimize traversal and a filter callback function to be invoked for
@@ -6860,7 +6860,7 @@ rtcOccluded1Mp
 The `rtcOccluded1Mp` function checks whether there are any hits for a
 stream of `M` single rays (`ray` argument) with the scene (`scene`
 argument). The `ray` argument points to an array of pointers to rays.
-Section [rtcOccluded1] for a description of how to set up and trace a
+Section [rtcOccluded1] for a description of how to set up and traceWithMulti a
 occlusion rays.
 
 The intersection context (`context` argument) can specify flags to
@@ -6923,7 +6923,7 @@ The `rtcIntersectNM` function finds the closest hits for a stream of
 argument). The `rays` argument points to an array of ray and hit
 packets with specified byte stride (`byteStride` argument) between the
 ray/hit packets. See Section [rtcIntersect1] for a description of how
-to set up and trace rays.
+to set up and traceWithMulti rays.
 
 The intersection context (`context` argument) can specify flags to
 optimize traversal and a filter callback function to be invoked for
@@ -6986,7 +6986,7 @@ stream of `M` ray packets (`ray` argument) of size `N` with the scene
 (`scene` argument). The `ray` argument points to an array of ray
 packets with specified byte stride (`byteStride` argument) between the
 ray packets. See Section [rtcOccluded1] for a description of how to
-set up and trace occlusion rays.
+set up and traceWithMulti occlusion rays.
 
 The intersection context (`context` argument) can specify flags to
 optimize traversal and a filter callback function to be invoked for
@@ -7050,7 +7050,7 @@ Each of these pointers points to an array with the ray or hit component
 data for each ray or hit. This way the individual components of the SOA
 ray stream do not need to be stored sequentially in memory, which makes
 it possible to have large varying size ray packets in SOA layout. See
-Section [rtcIntersect1] for a description of how to set up and trace
+Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 
 The intersection context (`context` argument) can specify flags to
@@ -7113,7 +7113,7 @@ of these pointers points to an array with the ray component data for
 each ray. This way the individual components of the SOA ray stream do
 not need to be stored sequentially in memory, which makes it possible
 to have large varying size ray packets in SOA layout. See Section
-[rtcOccluded1] for a description of how to set up and trace occlusion
+[rtcOccluded1] for a description of how to set up and traceWithMulti occlusion
 rays.
 
 The intersection context (`context` argument) can specify flags to

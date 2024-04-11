@@ -157,11 +157,11 @@ large packet-like streams in structure of pointer layout
 (`rtcIntersectNp` and `rtcOccludedNp`).
 
 See Sections [rtcIntersect1] and [rtcOccluded1] for a detailed
-description of how to set up and trace a ray.
+description of how to set up and traceWithMulti a ray.
 
 See tutorial [Triangle Geometry] for a complete example of how to
-trace single rays and ray packets. Also have a look at the tutorial
-[Stream Viewer] for an example of how to trace ray streams.
+traceWithMulti single rays and ray packets. Also have a look at the tutorial
+[Stream Viewer] for an example of how to traceWithMulti ray streams.
 
 Point Queries
 -------------

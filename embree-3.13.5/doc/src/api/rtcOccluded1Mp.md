@@ -22,7 +22,7 @@ The `rtcOccluded1Mp` function checks whether there are any hits for a
 stream of `M` single rays (`ray` argument) with the scene (`scene`
 argument). The `ray` argument points to an array of pointers to
 rays. Section [rtcOccluded1] for a description of how to set up and
-trace a occlusion rays.
+traceWithMulti a occlusion rays.
 
 ``` {include=src/api/inc/context.md}
 ```

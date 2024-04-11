@@ -25,7 +25,7 @@ stream of `M` ray packets (`ray` argument) of size `N` with the scene
 (`scene` argument). The `ray` argument points to an array of ray
 packets with specified byte stride (`byteStride` argument) between the ray
 packets. See Section [rtcOccluded1] for a description of how to set up
-and trace occlusion rays.
+and traceWithMulti occlusion rays.
 
 ``` {include=src/api/inc/context.md}
 ```

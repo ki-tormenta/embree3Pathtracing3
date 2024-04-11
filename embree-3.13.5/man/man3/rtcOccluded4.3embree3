@@ -42,7 +42,7 @@ void rtcOccluded16(
 The \f[C]rtcOccluded4/8/16\f[R] functions checks for each active ray of
 the ray packet of size 4, 8, or 16 (\f[C]ray\f[R] argument) whether
 there is any hit with the scene (\f[C]scene\f[R] argument).
-See Section [rtcOccluded1] for a description of how to set up and trace
+See Section [rtcOccluded1] for a description of how to set up and traceWithMulti
 occlusion rays.
 .PP
 A ray valid mask must be provided (\f[C]valid\f[R] argument) which

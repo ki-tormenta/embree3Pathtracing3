@@ -25,7 +25,7 @@ Each of these pointers points to an array with the ray component data
 for each ray. This way the individual components of the SOA ray stream
 do not need to be stored sequentially in memory, which makes it
 possible to have large varying size ray packets in SOA layout. See
-Section [rtcOccluded1] for a description of how to set up and trace
+Section [rtcOccluded1] for a description of how to set up and traceWithMulti
 occlusion rays.
 
 ``` {include=src/api/inc/context.md}

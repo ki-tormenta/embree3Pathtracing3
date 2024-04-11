@@ -36,7 +36,7 @@ data for each ray or hit.
 This way the individual components of the SOA ray stream do not need to
 be stored sequentially in memory, which makes it possible to have large
 varying size ray packets in SOA layout.
-See Section [rtcIntersect1] for a description of how to set up and trace
+See Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 .IP
 .nf

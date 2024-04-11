@@ -34,7 +34,7 @@ stream of \f[C]M\f[R] ray packets (\f[C]rayhit\f[R] argument) of size
 The \f[C]rays\f[R] argument points to an array of ray and hit packets
 with specified byte stride (\f[C]byteStride\f[R] argument) between the
 ray/hit packets.
-See Section [rtcIntersect1] for a description of how to set up and trace
+See Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 .IP
 .nf

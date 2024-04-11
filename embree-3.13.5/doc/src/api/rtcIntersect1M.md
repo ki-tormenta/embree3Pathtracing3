@@ -24,7 +24,7 @@ The `rtcIntersect1M` function finds the closest hits for a stream of
 argument). The `rayhit` argument points to an array of ray and hit
 data with specified byte stride (`byteStride` argument) between the
 ray/hit structures. See Section [rtcIntersect1] for a description of
-how to set up and trace rays.
+how to set up and traceWithMulti rays.
 
 ``` {include=src/api/inc/context.md}
 ```

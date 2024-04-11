@@ -34,7 +34,7 @@
 The `rtcIntersect4/8/16` functions finds the closest hits for a ray
 packet of size 4, 8, or 16 (`rayhit` argument) with the scene (`scene`
 argument). The ray/hit input contains a ray packet and hit packet. See
-Section [rtcIntersect1] for a description of how to set up and trace
+Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 
 A ray valid mask must be provided (`valid` argument) which stores

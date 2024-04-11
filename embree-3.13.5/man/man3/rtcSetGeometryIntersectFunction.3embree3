@@ -89,7 +89,7 @@ intersection callback for each encountered intersection, if filtering of
 intersections is desired.
 This can be achieved through the \f[C]rtcFilterIntersection\f[R] call.
 .PP
-Within the user geometry intersect function, it is safe to trace new
+Within the user geometry intersect function, it is safe to traceWithMulti new
 rays and create new scenes and geometries.
 .IP
 .nf

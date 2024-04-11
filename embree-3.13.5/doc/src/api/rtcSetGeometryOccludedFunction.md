@@ -68,7 +68,7 @@ occlusion callback for each encountered intersection, if filtering
 of intersections is desired. This can be achieved through the
 `rtcFilterOcclusion` call.
 
-Within the user geometry occlusion function, it is safe to trace new
+Within the user geometry occlusion function, it is safe to traceWithMulti new
 rays and create new scenes and geometries.
 
 ``` {include=src/api/inc/reorder_callback_occluded.md}

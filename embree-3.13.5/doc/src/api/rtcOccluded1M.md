@@ -22,7 +22,7 @@ The `rtcOccluded1M` function checks whether there are any hits for a
 stream of `M` single rays (`ray` argument) with the scene (`scene`
 argument). The `ray` argument points to an array of rays with
 specified byte stride (`byteStride` argument) between the rays. See
-Section [rtcOccluded1] for a description of how to set up and trace
+Section [rtcOccluded1] for a description of how to set up and traceWithMulti
 occlusion rays.
 
 ``` {include=src/api/inc/context.md}

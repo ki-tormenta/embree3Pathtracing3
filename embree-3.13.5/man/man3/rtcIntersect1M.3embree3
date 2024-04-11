@@ -33,7 +33,7 @@ scene (\f[C]scene\f[R] argument).
 The \f[C]rayhit\f[R] argument points to an array of ray and hit data
 with specified byte stride (\f[C]byteStride\f[R] argument) between the
 ray/hit structures.
-See Section [rtcIntersect1] for a description of how to set up and trace
+See Section [rtcIntersect1] for a description of how to set up and traceWithMulti
 rays.
 .IP
 .nf

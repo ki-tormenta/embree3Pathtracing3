@@ -31,7 +31,7 @@ for a stream of \f[C]M\f[R] single rays (\f[C]ray\f[R] argument) with
 the scene (\f[C]scene\f[R] argument).
 The \f[C]ray\f[R] argument points to an array of rays with specified
 byte stride (\f[C]byteStride\f[R] argument) between the rays.
-See Section [rtcOccluded1] for a description of how to set up and trace
+See Section [rtcOccluded1] for a description of how to set up and traceWithMulti
 occlusion rays.
 .IP
 .nf

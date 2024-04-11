@@ -22,7 +22,7 @@ The `rtcIntersect1Mp` function finds the closest hits for a stream
 of `M` single rays (`rayhit` argument) with the scene (`scene`
 argument). The `rayhit` argument points to an array of pointers to the
 individual ray/hit structures. See Section [rtcIntersect1] for a
-description of how to set up and trace a ray.
+description of how to set up and traceWithMulti a ray.
 
 ``` {include=src/api/inc/context.md}
 ```

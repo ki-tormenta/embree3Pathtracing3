@@ -25,7 +25,7 @@ The `rtcIntersectNM` function finds the closest hits for a stream of
 (`scene` argument). The `rays` argument points to an array of ray and
 hit packets with specified byte stride (`byteStride` argument) between the
 ray/hit packets. See Section [rtcIntersect1] for a description of how
-to set up and trace rays.
+to set up and traceWithMulti rays.
 
 ``` {include=src/api/inc/context.md}
 ```

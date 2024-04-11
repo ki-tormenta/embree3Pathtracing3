@@ -5,6 +5,8 @@
 #ifndef HELLO_EMBREE3_COLOR_H
 #define HELLO_EMBREE3_COLOR_H
 
+
+
 using Color = Eigen::Vector3d;
 
 
